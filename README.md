@@ -5,8 +5,8 @@ Firstly one needs to input the size of treap that he/she wants to create and tha
 2. for Searching an element in the Treap
 3. for Deleting an element from the Treap
 4. for Splitting the Treap across an element</br>
-   further you choose 1. for choosing Treap 1
-                      2. for choosing Treap 2
+   further you choose 1. for choosing Treap 1</br>
+                      2. for choosing Treap 2</br>
                       3. for merging the splitted treaps
 5. for Inorder Traversal
 6. for Exit
