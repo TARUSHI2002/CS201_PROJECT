@@ -295,7 +295,8 @@ int main(){
                     scanf("%d",&m);
                    if(m==1){
                    Root=l_root;
-                   root2=r_root;}
+                   root2=r_root;
+		   }
 	           else if(m==2){
                      Root=r_root;
                      root2=l_root;
@@ -304,6 +305,7 @@ int main(){
                   Root=merge(l_root,r_root);
                   }
             }
+	}
 	else if(i==5){
             printf("The inorder traversal is:\n");
             inorder(Root);
@@ -312,7 +314,6 @@ int main(){
             return 0;
         }
             
-        }
-        
-    }
+     }
+}
 
