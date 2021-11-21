@@ -15,9 +15,9 @@ The src folder contains code for all operations indvidually for better explanati
 Although to run this program ,you must excecute the main file i.e. project.c
 
 Group No. 24 members-
-1.Janmeet Singh Makkar(2020csb1175)
-2.Tarushi(2020csb1135)
-3.Princy Malhotra (2020mcb1193)
+1.Janmeet Singh Makkar(2020csb1175)</br>
+2.Tarushi(2020csb1135)</br>
+3.Princy Malhotra (2020mcb1193)</br>
 
 TA- Napendra Solanki
 
