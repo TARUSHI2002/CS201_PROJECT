@@ -1,5 +1,11 @@
 struct Node* delete_Node(struct Node* root,int val)    //function to delete a node
 {
+    if(search(root,val)==NULL)                         //Check if element to be deleted is present or not
+    {
+     printf("Element to be deleted not present in Treap. exiting...\n");
+     return root;
+    } 
+    
     if(root==NULL)                                     //if treap is empty
     return root;
 
