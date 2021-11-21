@@ -10,6 +10,7 @@ struct Node{                            //struct Node which
 
 struct Node* l_root=NULL;                    //Root of the left tree obtained after splitting
 struct Node* r_root=NULL;                    //Root of the right tree obtained after splitting
+struct Node* root2=NULL;
 
 struct Node* New_Node(int k,int p){                              //New Node containing key and priority
     struct Node*New = (struct Node*)malloc(sizeof(struct Node)); 
@@ -53,7 +54,7 @@ struct Node* Insert(struct Node* Head,int k,int p)    //function to insert a new
     New->left = NULL;
     New->right = NULL;
     if(p==0){
-    New->pr = 1e9;
+    New->pr = RAND_MAX;
     }
     else{
     New->pr = rand();
@@ -95,6 +96,12 @@ struct Node* search(struct Node* root,int val)      //searching a node
 
 struct Node* delete_Node(struct Node* root,int val)    //function to delete a node
 {
+    if(search(root,val)==NULL)                         //Check if element to be deleted is present or not
+    {
+     printf("Element to be deleted not present in Treap. exiting...\n");
+     return root;
+    } 
+	
     if(root==NULL)                                     //if treap is empty
     return root;
 
@@ -237,6 +244,7 @@ int main(){
     printf("Enter the number of elements you want in the treap.\n");
     int h;
     scanf("%d",&h);
+    printf("Now please enter %d elements(keys) one by one-\n",h);
     struct Node*Root = NULL;
     for(int i=0;i<h;++i){
         int j;
@@ -268,36 +276,44 @@ int main(){
             int o;
             printf("Enter the element you want to delete\n");
             scanf("%d",&o);
+	    if(search(Root,o)!=NULL) printf("Element successfully deleted, to check traverse the updated treap... \n");
             Root=delete_Node(Root,o);
         }
         else if(i==4){
             int p;
             printf("Enter the element about which you want to split the treap\n");
             scanf("%d",&p);
-            treapSplit(Root,p);
-            printf("The two treaps are-\nTreap 1\n");
-            inorder(l_root);
-            printf("\nTreap 2\n");
-            inorder(r_root);
-            printf("Choose what to do:\n1.use Treap 1 further\n2.Use Treap 2 further\n3.Merge\n");
-            int m;
-            scanf("%d",&m);
-            if(m==1){
-            Root=l_root;
+            if(search(Root,p)==NULL) {printf("Element not present in Treap,split can't happen. exiting...\n");}
+	    else{
+		   treapSplit(Root,p);
+                   printf("The two treaps are-\nTreap 1\n");
+                   inorder(l_root);
+                   printf("\nTreap 2\n");
+                   inorder(r_root);
+                   printf("Choose what to do:\n1.use Treap 1 further\n2.Use Treap 2 further\n3.Merge\n");
+                   int m;
+                    scanf("%d",&m);
+                   if(m==1){
+                   Root=l_root;
+                   root2=r_root;
+		   }
+	           else if(m==2){
+                     Root=r_root;
+                     root2=l_root;
+                  }
+                  else{
+                  Root=merge(l_root,r_root);
+                  }
             }
-            else if(m==2){
-            Root=r_root;
-            }
-            else{
-            Root=merge(l_root,r_root);
-            }
-        }
-        else if(i==5){
+	}
+	else if(i==5){
             printf("The inorder traversal is:\n");
             inorder(Root);
         }
         else{
             return 0;
         }
-    }
+            
+     }
 }
+
