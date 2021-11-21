@@ -54,7 +54,7 @@ struct Node* Insert(struct Node* Head,int k,int p)    //function to insert a new
     New->left = NULL;
     New->right = NULL;
     if(p==0){
-    New->pr = 1e9;
+    New->pr = RAND_MAX;
     }
     else{
     New->pr = rand();
